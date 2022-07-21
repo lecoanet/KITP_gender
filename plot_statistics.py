@@ -40,19 +40,41 @@ for i, ax in enumerate(plot_axes):
     x_width = 14.75-0.25
 
 papers_male_authors = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
-fraction_male_authors = [0.0024, 0.011, 0.039, 0.0923, 0.1592, 0.2084, 0.201, 0.1481, 0.0851, 0.0375, 0.0121, 0.0027, 0.0012]
+fraction_male_authors = np.array([0.0024, 0.011, 0.039, 0.0923, 0.1592, 0.2084, 0.201, 0.1481, 0.0851, 0.0375, 0.0121, 0.0027, 0.0012])
 
 papers_female_authors = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-fraction_female_authors = [0.0296, 0.1365, 0.2448, 0.2629, 0.1858, 0.0988, 0.0311, 0.0082, 0.0021, 0.0002]
+fraction_female_authors = np.array([0.0296, 0.1365, 0.2448, 0.2629, 0.1858, 0.0988, 0.0311, 0.0082, 0.0021, 0.0002])
+
+mean_male1 = np.sum(fraction_male_authors * papers_male_authors)
+std_male = np.sqrt( np.sum( fraction_male_authors * (papers_male_authors - mean_male1)**2 ) )
+
+mean_female1 = np.sum(fraction_female_authors * papers_female_authors)
+std_female = np.sqrt( np.sum( fraction_female_authors * (papers_female_authors - mean_female1)**2 ) )
+
+print(mean_male1)
+print(std_male)
+print(mean_female1)
+print(std_female)
 
 papers_male_coauthors = np.array([3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
-fraction_male_coauthors = [0.0014, 0.017, 0.0699, 0.1636, 0.2453, 0.2475, 0.1562, 0.072, 0.0226, 0.0039, 0.0006, 0.0]
+fraction_male_coauthors = np.array([0.0014, 0.017, 0.0699, 0.1636, 0.2453, 0.2475, 0.1562, 0.072, 0.0226, 0.0039, 0.0006, 0.0])
 
 papers_female_coauthors = np.array([1, 2, 3, 4, 5])
-fraction_female_coauthors = [0.2081, 0.4112, 0.2874, 0.0859, 0.0074]
+fraction_female_coauthors = np.array([0.2081, 0.4112, 0.2874, 0.0859, 0.0074])
 
-mean_male = [6.47, 7.566]
-mean_female = [2.91, 2.282]
+mean_male2 = np.sum(fraction_male_coauthors * papers_male_coauthors)
+std_male = np.sqrt( np.sum( fraction_male_coauthors * (papers_male_coauthors - mean_male2)**2 ) )
+
+mean_female2 = np.sum(fraction_female_coauthors * papers_female_coauthors)
+std_female = np.sqrt( np.sum( fraction_female_coauthors * (papers_female_coauthors - mean_female2)**2 ) )
+
+print(mean_male2)
+print(std_male)
+print(mean_female2)
+print(std_female)
+
+mean_male = [mean_male1, mean_male2]
+mean_female = [mean_female1, mean_female2]
 
 male_only = '#178583'
 female_only = '#EDC2CE'
